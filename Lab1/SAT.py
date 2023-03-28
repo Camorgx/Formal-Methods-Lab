@@ -48,6 +48,8 @@ def main():
         ans = [['Q' if ans[p[i][j]] else '_' for j in range(n)] for i in range(n)]
         for i in range(n):
             print("".join(ans[i]))
+    else:
+        print('No answer')
 
 
 if __name__ == '__main__':
