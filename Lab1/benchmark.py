@@ -1,4 +1,4 @@
-from time import process_time_ns
+from time import perf_counter
 from pandas import DataFrame
 from z3 import *
 
@@ -12,12 +12,12 @@ def test(method):
     for n in test_n:
         print(f'n = {n}')
         solver = Solver()
-        t1 = process_time_ns()
+        t1 = perf_counter()
         sym, cons = method.gen_cons(n)
         solver.add(cons)
-        t2 = process_time_ns()
+        t2 = perf_counter()
         solver.check()
-        t3 = process_time_ns()
+        t3 = perf_counter()
         res.append([n, t2 - t1, t3 - t2])
     return res
 
